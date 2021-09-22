@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="page-breadcrumb">
+    <div class="row">
+      <div class="col-12 d-flex no-block align-items-center">
+        <h4 class="page-title">Tambah Data Barang</h4>
+        <div class="ms-auto text-end">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Tambah Data Barang
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Container fluid  -->
+  <!-- ============================================================== -->
+  <div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <form class="form-horizontal" action="{{ url_for('tambah') }}" method="post">
+            <div class="card-body">
+              <h4 class="card-title">Data Barang</h4>
+              <div class="form-group row">
+                <label
+                  for="nama_barang"
+                  class="col-sm-3 text-end control-label col-form-label"
+                  >Nama Barang</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama"
+                    placeholder="Nama Barang..."
+                    name="nama"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="stok"
+                  class="col-sm-3 text-end control-label col-form-label"
+                  >Stok</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="stok"
+                    name="stok"
+                    placeholder="Stok..."
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="Harga"
+                  class="col-sm-3 text-end control-label col-form-label"
+                  >Harga</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Harga"
+                    name="harga"
+                    placeholder="Harga..."
+                    oninput="this.value = number_format(this.value)"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="border-top">
+              <div class="card-body">
+                <button type="submit" class="btn btn-primary float-end mb-3">
+                  Simpan
+                </button>
+                <a type="button" href="{{ url_for('index') }}" class="btn btn-secondary float-end mb-3 mx-1">
+                  Batal
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Container fluid  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- footer -->
+  <!-- ============================================================== -->
+  <footer class="footer text-center">
+    All Rights Reserved by Matrix-admin. Designed and Developed by
+    <a href="https://www.wrappixel.com">WrapPixel</a>.
+  </footer>
+  <!-- ============================================================== -->
+  <!-- End footer -->
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+{% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript">
+var number_format = function(num) {
+  num = num.replace(/[^0-9.]/g, '');
+  var str = num.toString().replace("", ""),
+      parts = false,
+      output = [],
+      i = 1,
+      formatted = null;
+  if (str.indexOf(".") > 0) {
+      parts = str.split(".");
+      str = parts[0];
+  }
+  str = str.split("").reverse();
+  for (var j = 0, len = str.length; j < len; j++) {
+      if (str[j] != ",") {
+          output.push(str[j]);
+          if (i % 3 == 0 && j < (len - 1)) {
+              output.push(",");
+          }
+          i++;
+      }
+  }
+  formatted = output.reverse().join("");
+  // return("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+  return ("" + formatted + "");
+};
+</script>
+{% endblock %}

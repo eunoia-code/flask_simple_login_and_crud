@@ -1,0 +1,4 @@
+include db_flask.sql
+graft static
+graft templates
+global-exclude *.pyc
